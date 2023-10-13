@@ -6,7 +6,7 @@ steps:
   args:
     - '-c'
     - |
-      docker build -t node-app -f Dockerfile .
+      docker build -t up-app -f Dockerfile .
 - name: 'gcr.io/cloud-builders/gcloud'
   entrypoint: 'bash'
   args:
