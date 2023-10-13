@@ -1,14 +1,23 @@
+options:
+  logging: CLOUD_LOGGING_ONLY
 steps:
-  # Docker Build
-  - name: 'gcr.io/cloud-builders/docker'
-    args: [
-            'build',
-            '-t',
-            'asia-south1-docker.pkg.dev/pub-demo-cb-ar/python-repo/my-app:${SHORT_SHA}',
-            
-          ]
+- name: 'gcr.io/cloud-builders/docker'
+  args: ['build', '-t', 'node-app-js', '.']
 
-  # Docker push to Google Artifact Registry
-  - name: 'gcr.io/cloud-builders/docker'
-    args: ['push',  'asia-south1-docker.pkg.dev/pub-demo-cb-ar/python-repo/my-app:${SHORT_SHA}']
+
+
+
+# steps:
+#   # Docker Build
+#   - name: 'gcr.io/cloud-builders/docker'
+#     args: [
+#             'build',
+#             '-t',
+#             'asia-south1-docker.pkg.dev/pub-demo-cb-ar/python-repo/my-app:${SHORT_SHA}',
+            
+#           ]
+
+#   # Docker push to Google Artifact Registry
+#   - name: 'gcr.io/cloud-builders/docker'
+#     args: ['push',  'asia-south1-docker.pkg.dev/pub-demo-cb-ar/python-repo/my-app:${SHORT_SHA}']
 
