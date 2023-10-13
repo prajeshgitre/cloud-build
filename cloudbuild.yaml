@@ -1,49 +1,14 @@
-# options:
-#   logging: CLOUD_LOGGING_ONLY
-# steps:
-# - name: 'gcr.io/cloud-builders/docker'
-#   args: ['build', '-t', 'node-app-js', '.']
-options:
-  logging: CLOUD_LOGGING_ONLY
-# steps:
-# - name: 'gcr.io/cloud-builders/docker'
-#   args: ['build', '-t', 'node-app-js', '.']
-# images: ['us-west2-docker.pkg.dev/$PROJECT_ID/$REPOSITORY/hello-world:latest']
-# - name: 'gcr.io/cloud-builders/docker'
-#   args: ['push', 'us-west2-docker.pkg.dev/$PROJECT_ID/$REPOSITORY/hello-world:latest']
-# images: ['us-west2-docker.pkg.dev/$PROJECT_ID/$REPOSITORY/hello-world:latest']
+
+
 steps:
 - name: 'gcr.io/cloud-builders/docker'
   entrypoint: 'bash'
   args:
     - '-c'
     - |
-      docker build -t Prajesh -f dockerfile .
-      docker images
-- name: 'gcr.io/cloud-builders/gcloud'
-  entrypoint: 'bash'
-  args:
-    - '-c'
-    - |
-      gcloud auth list
-      gcloud config list
+      docker build -t  asia-south1-docker.pkg.dev/prj-hotelogic-poc-01-22106/docker-task/prajesh-docker:v1 .
+      gcloud auth configure-docker asia-south1-docker.pkg.dev
 
-         - name: 'gcr.io/cloud-builders/docker'
-          args: ['push',  'asia-south1-docker.pkg.dev/pub-demo-cb-ar/python-repo/prajesh']
-
-
-
-# steps:
-#   # Docker Build
-#   - name: 'gcr.io/cloud-builders/docker'
-#     args: [
-#             'build',
-#             '-t',
-#             'asia-south1-docker.pkg.dev/pub-demo-cb-ar/python-repo/my-app:${SHORT_SHA}',
-            
-#           ]
-
-#   # Docker push to Google Artifact Registry
-#   - name: 'gcr.io/cloud-builders/docker'
-#     args: ['push',  'asia-south1-docker.pkg.dev/pub-demo-cb-ar/python-repo/my-app:${SHORT_SHA}']
+- name: 'gcr.io/cloud-builders/docker'
+  args: ['push', 'asia-south1-docker.pkg.dev/prj-hotelogic-poc-01-22106/docker-task/prajesh-docker:v1']
 
