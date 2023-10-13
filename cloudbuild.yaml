@@ -18,7 +18,7 @@ steps:
   args:
     - '-c'
     - |
-      docker build -t node-app -f dockerfile .
+      docker build -t Prajesh -f dockerfile .
       docker images
 - name: 'gcr.io/cloud-builders/gcloud'
   entrypoint: 'bash'
@@ -27,6 +27,9 @@ steps:
     - |
       gcloud auth list
       gcloud config list
+
+         - name: 'gcr.io/cloud-builders/docker'
+#          args: ['push',  'asia-south1-docker.pkg.dev/pub-demo-cb-ar/python-repo/prajesh']
 
 
 
