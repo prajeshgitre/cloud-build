@@ -8,6 +8,7 @@ steps:
     - |
       docker build -t up-app -f Dockerfile .
       docker tag up-app asia-south1-docker.pkg.dev/prj-hotelogic-poc-01-22106/docker-task/prajesh-docker/up-app:latest
+      docker push asia-south1-docker.pkg.dev/prj-hotelogic-poc-01-22106/docker-task/prajesh-docker/up-app:latest
 - name: 'gcr.io/cloud-builders/gcloud'
   entrypoint: 'bash'
   args:
