@@ -29,7 +29,7 @@ steps:
       gcloud config list
 
          - name: 'gcr.io/cloud-builders/docker'
-#          args: ['push',  'asia-south1-docker.pkg.dev/pub-demo-cb-ar/python-repo/prajesh']
+          args: ['push',  'asia-south1-docker.pkg.dev/pub-demo-cb-ar/python-repo/prajesh']
 
 
 
