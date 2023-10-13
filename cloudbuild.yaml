@@ -3,12 +3,16 @@ options:
 
 
 steps:
+
+steps:
+-name: 'gcr.io/cloud-builders/docker'
+ args:  docker build -t  asia-south1-docker.pkg.dev/prj-hotelogic-poc-01-22106/docker-task/prajesh-docker:v1 .
 - name: 'gcr.io/cloud-builders/docker'
   entrypoint: 'bash'
   args:
     - '-c'
     - |
-      docker build -t  asia-south1-docker.pkg.dev/prj-hotelogic-poc-01-22106/docker-task/prajesh-docker:v1 .
+    
       gcloud auth configure-docker asia-south1-docker.pkg.dev
       gcloud auth list
       gcloud config list
