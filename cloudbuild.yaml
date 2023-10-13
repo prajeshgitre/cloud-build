@@ -1,21 +1,23 @@
 options:
   logging: CLOUD_LOGGING_ONLY
-
-
+# steps:
+# - name: 'gcr.io/cloud-builders/docker'
+#   args: ['build', '-t', 'node-app-js', '.']
+# images: ['us-west2-docker.pkg.dev/$PROJECT_ID/$REPOSITORY/hello-world:latest']
+# - name: 'gcr.io/cloud-builders/docker'
+#   args: ['push', 'us-west2-docker.pkg.dev/$PROJECT_ID/$REPOSITORY/hello-world:latest']
+# images: ['us-west2-docker.pkg.dev/$PROJECT_ID/$REPOSITORY/hello-world:latest']
 steps:
-
-steps:
--name: 'gcr.io/cloud-builders/docker'
- args:  docker build -t  asia-south1-docker.pkg.dev/prj-hotelogic-poc-01-22106/docker-task/prajesh-docker:v1 .
 - name: 'gcr.io/cloud-builders/docker'
   entrypoint: 'bash'
   args:
     - '-c'
     - |
-    
-      gcloud auth configure-docker asia-south1-docker.pkg.dev
+      docker build -t node-app -f dockerfile .
+- name: 'gcr.io/cloud-builders/gcloud'
+  entrypoint: 'bash'
+  args:
+    - '-c'
+    - |
       gcloud auth list
       gcloud config list
-- name: 'gcr.io/cloud-builders/docker'
-  args: ['push', 'asia-south1-docker.pkg.dev/prj-hotelogic-poc-01-22106/docker-task/prajesh-docker:v1']
-
