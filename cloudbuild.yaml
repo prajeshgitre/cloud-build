@@ -1,18 +1,25 @@
-options:
-  logging: CLOUD_LOGGING_ONLY
 steps:
-- name: 'gcr.io/cloud-builders/docker'
-  entrypoint: 'bash'
-  args:
-    - '-c'
-    - |
-      docker build -t up-app -f Dockerfile .
-      docker tag up-app asia-south1-docker.pkg.dev/prj-common-srv-single-01/docker-task/prajesh-docker/up-app:latest
-      docker push asia-south1-docker.pkg.dev/prj-common-srv-single-01/docker-task/prajesh-docker/up-app:latest
-- name: 'gcr.io/cloud-builders/gcloud'
-  entrypoint: 'bash'
-  args:
-    - '-c'
-    - |
-      gcloud auth list
-      gcloud config list
+  # Docker Build
+  - name: 'gcr.io/cloud-builders/docker'
+    args: ['build', '-t', 
+           'asia-south1-docker.pkg.dev/prj-common-srv-single-01/my-docker-repo/myimage', 
+           '.']
+
+  # Docker Push
+  - name: 'gcr.io/cloud-builders/docker'
+    args: ['push', 
+           'asia-south1-docker.pkg.dev/prj-common-srv-single-01/my-docker-repo/myimage']
+
+  # Entrypoint, timeout and environment variables
+  - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
+    entrypoint: 'gcloud'
+    timeout: 240s
+    args: ['compute', 'instances', 
+           'create-with-container', 'my-vm-name',
+           '--container-image', 
+           'asia-south1-docker.pkg.dev/prj-common-srv-single-01/my-docker-repo/myimage']
+    env:
+      - 'CLOUDSDK_COMPUTE_REGION=asia-south1'
+      - 'CLOUDSDK_COMPUTE_ZONE=asia-south1-a'
+# [END cloudbuild_basic_config]
+
