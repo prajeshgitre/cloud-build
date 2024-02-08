@@ -1,5 +1,20 @@
-options:
-  logging: 'REGIONAL_USER_OWNED_BUCKET'
+# options:
+#   logging: CLOUD_LOGGING_ONLY
+
+steps:
+  - name: 'gcr.io/cloud-builders/gcloud'
+    args:
+      - 'compute'
+      - 'instances'
+      - 'create-with-container'
+      - 'my-vm-name'
+      - '--container-image=asia-south1-docker.pkg.dev/prajesh-devops/my-docker-repo/myimage'
+      - '--zone=asia-south1-a'
+      - '--machine-type=n1-standard-1'  # Change to the desired machine type
+      - '--tags=http-server,https-server'
+      - '--metadata=google-logging-enabled=true'
+      - '--logging=gs://cloud-build-buck/logs/'  # Replace with your actual bucket name
+
 
 steps:
   # Docker Build
