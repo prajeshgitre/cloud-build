@@ -1,5 +1,5 @@
 options:
-  logging: CLOUD_LOGGING_ONLY
+  default-logs-bucket: REGIONAL_USER_OWNED_BUCKET
 
 steps:
   # Docker Build
