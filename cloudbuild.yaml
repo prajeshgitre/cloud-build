@@ -14,15 +14,15 @@ steps:
            'asia-south1-docker.pkg.dev/prajesh-devops/my-docker-repo/myimage']
 
   # Entrypoint, timeout and environment variables
-  - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
-    entrypoint: 'gcloud'
-    timeout: 240s
-    args: ['compute', 'instances', 
-           'create-with-container', 'my-vm-name',
-           '--container-image', 
-           'asia-south1-docker.pkg.dev/prajesh-devops/my-docker-repo/myimage']
-    env:
-      - 'CLOUDSDK_COMPUTE_REGION=asia-south1'
-      - 'CLOUDSDK_COMPUTE_ZONE=asia-south1-a'
+  # - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
+  #   entrypoint: 'gcloud'
+  #   timeout: 240s
+  #   args: ['compute', 'instances', 
+  #          'create-with-container', 'my-vm-name',
+  #          '--container-image', 
+  #          'asia-south1-docker.pkg.dev/prajesh-devops/my-docker-repo/myimage']
+  #   env:
+  #     - 'CLOUDSDK_COMPUTE_REGION=asia-south1'
+  #     - 'CLOUDSDK_COMPUTE_ZONE=asia-south1-a'
 # [END cloudbuild_basic_config]
 
