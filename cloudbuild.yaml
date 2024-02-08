@@ -1,5 +1,5 @@
 options:
-  default-logs-bucket: REGIONAL_USER_OWNED_BUCKET
+  logsBucket: 'REGIONAL_USER_OWNED_BUCKET'
 
 steps:
   # Docker Build
