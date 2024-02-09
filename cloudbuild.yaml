@@ -1,5 +1,5 @@
  options:
-   logging: CLOUD_LOGGING_ONLY
+  logging: CLOUD_LOGGING_ONLY
 
 steps:
   # Docker Build
@@ -13,7 +13,7 @@ steps:
     args: ['push', 
            'asia-south1-docker.pkg.dev/prajesh-devops/my-docker-repo/myimage']
 
-  # Entrypoint, timeout and environment variables
+  # Entrypoint, timeout, and environment variables
   - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
     entrypoint: 'gcloud'
     timeout: 240s
@@ -27,5 +27,6 @@ steps:
       - '--machine-type=n1-standard-1'  # Change to the desired machine type
     env:
       - 'CLOUDSDK_COMPUTE_REGION=asia-south1'
+
 
 
